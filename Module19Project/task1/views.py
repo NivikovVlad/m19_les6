@@ -50,6 +50,8 @@ class Shop(TemplateView):
 
     def get_context_data(self, **kwargs):
         games = Game.objects.all().order_by('title')
+        if games is None:
+            games = ['', '']
         kol_product = self.request.GET.get('kol_product')
         if not kol_product:
             kol_product = 12

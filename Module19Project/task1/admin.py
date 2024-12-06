@@ -14,7 +14,7 @@ class GameAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ("Редактировать", {
-             'fields': ('title', 'cost', 'description'),
+             'fields': ('title', 'cost', 'description', 'size'),
          }, ),
         (None, {
             "fields": ["age_limited", ],

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'task1',
     'rest_framework',
-    'django.core.paginator',
+
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'Module19Project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "template1",
+        "NAME": "shop",
         "USER": "postgres",
         "PASSWORD": "ponedelnik",
         "HOST": "localhost",
