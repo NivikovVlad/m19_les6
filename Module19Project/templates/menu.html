@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }} </title>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block menu %}
+        <p> Жми -> <button onclick="document.location='/main/'"> Главная </button> </p>
+        <p> Жми -> <button onclick="document.location='/shop/'"> Магазин </button> </p>
+        <p> Жми -> <button onclick="document.location='/basket/'"> Корзина </button> </p>
+        {% endblock %}
+    </main>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+            <h2>Подвал затопило</h2>
+        {% endblock %}
+    </footer>
+
+</body>
+</html>

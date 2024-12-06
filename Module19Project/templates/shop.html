@@ -1,0 +1,93 @@
+{% extends "menu.html" %}
+
+{% block pagename %}
+    <h1> {{ title }} </h1>
+{% endblock %}
+
+{% block menu %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<style>
+    div {
+        color: black;
+        text-align: left;
+    }
+    .product {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+        min-width: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .item {
+        box-sizing: border-box;
+        border: solid 2px #f44e46;
+        background-color: #F5DEB3;
+        color: #fff;
+        padding: 24px 12px;
+        text-align: center;
+        border-radius: 8px;
+        border: solid #fff 2px;
+        flex: 1;
+        flex-grow: 1;
+        flex-basis: 20%;
+        max-width: 20%;
+        justify-content: space-evenly;
+    }
+</style>
+
+  <h1> Товары </h1>
+
+  <form action="" method="get">
+    <label for="kol_product">Количество элементов на странице:</label>
+    <select name="kol_product">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+    </select>
+    <input type="submit" value="Применить">
+  </form>
+
+  <div class="product">
+    {% for game in page_games %}
+      <div class="item">
+        <div>Название: {{game.title}}</div>
+        <div>Стоимость: {{game.cost}} руб</div>
+        <div>Описание: {{game.description}}</div>
+        {% if game.age_limited %}
+          <div>Ограничение: 18+</div>
+        {% else %}
+          <div>Ограничение: 3+</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="pagination">
+    <p>Страницы:</p>
+    <ul>
+      {% if page_games.has_previous %}
+        <li><a href="?page=1&kol_product={{ kol_product }}">В начало</a></li>
+        <li>{{ page_games.number }}</li>
+        <li><a href="?page={{ page_games.previous_page_number }}&kol_product={{ kol_product }}">Назад</a></li>
+      {% else %}
+        <li>Назад</li>
+        <li>{{ page_games.number }}</li>
+      {% endif %}
+      {% if page_games.has_next %}
+        <li><a href="?page={{ page_games.next_page_number }}&kol_product={{ kol_product }}">Следующая</a></li>
+        <li><a href="?page={{ page_games.paginator.num_pages }}&kol_product={{ kol_product }}">В конец</a></li>
+      {% endif %}
+    </ul>
+  </div>
+{% endblock %}
+
+
+{% block footer %}
+  <h2>Подвал затопило</h2>
+{% endblock %}

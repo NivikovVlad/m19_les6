@@ -1,0 +1,34 @@
+{% extends "menu.html" %}
+
+{% block menu %}
+    {{ block.super }}
+    <p>Для тестов добавил и сюда кнопки</p>
+{% endblock %}
+
+
+{% block content %}
+<h1> Регистрация </h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="username">Введите логин:</label>
+    <input type="text" name="username" maxlength="30" required>
+    <br>
+    <label for="password">Введите пароль:</label>
+    <input type="password" name="password" minlength="8" maxlength="30" required>
+    <br>
+    <label for="repeat_password">Повторите пароль:</label>
+    <input type="password" name="repeat_password" minlength="8" maxlength="30" required>
+    <br>
+    <label for="age">Введите свой возраст:</label>
+    <input type="number" name="age" maxlength="3" required>
+    <br>
+    <input type="submit" value="Регистрация">
+  </form>
+  {% if error %}
+    <p> {{ error }} </p>
+  {% endif %}
+{% endblock %}
+
+  {% block footer %}
+
+  {% endblock %}
